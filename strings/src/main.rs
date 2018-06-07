@@ -8,7 +8,7 @@ fn main() {
 
     println!("{}", s);
 
-    s = "2nd comments".to_string();
+    //s = "2nd comments".to_string();
 
     println!("{}", s);
 }
