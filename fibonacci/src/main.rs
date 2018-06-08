@@ -2,7 +2,7 @@ use std::io;
 use std::io::prelude::*;
 
 fn main() {
-    println!("Hello!");
+    println!("Hello!!");
     println!("Which fibonacci number would you like to find?");
 
     let mut pick = String::new();
