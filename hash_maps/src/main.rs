@@ -1,16 +1,29 @@
 use std::collections::HashMap;
 
 fn main() {
-    // let mut scores = HashMap::new();
 
-    let teams = vec![String::from("Orange"), String::from("Red")];
-    let initial_scores = vec![20, 40];
+let mut scores = HashMap::new();
+scores.insert(String::from("Blue"), 10);
 
-    let scores: HashMap<_,_> = teams.iter().zip(initial_scores.iter()).collect();
+scores.entry(String::from("Yellow")).or_insert(50);
+scores.entry(String::from("Blue")).or_insert(50);
 
-    // scores.insert(String::from("Blue"), 10);
-    // scores.insert(String::from("Yellow"), 50);
+println!("{:?}", scores);
 
+word_count();
+    
+}
 
-    println!("{:#?}", scores);
+fn word_count() {
+    
+    let text = "hello world wonderful world";
+
+    let mut map = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{:?}", map);
 }
