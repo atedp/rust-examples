@@ -2,6 +2,13 @@ use std::fs::File;
 use std::io::ErrorKind;
 
 fn main() {
+    
+    using_matching();
+
+}
+
+
+fn using_matching() {
     let f = File::open("hello.txt");
 
     let f = match f {
