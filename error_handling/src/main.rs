@@ -3,10 +3,19 @@ use std::io::Read;
 use std::fs::File;
 
 fn main() {
+    read_username_from_file_v();
     read_username_from_file();
 }
 
-fn read_username_from_file() -> Result<String, io::Error>{
+fn read_username_from_file() -> Result<String, io::Error> {
+    // the ? Operator can be used as a shortcut to propicate errors
+    let mut f = File::open("hello.txt")?;
+    let mut s = String::new();
+    f.read_to_string(&mut s)?;
+    Ok(s)
+}
+
+fn read_username_from_file_v() -> Result<String, io::Error>{
     let f = File::open("hello.txt");
 
     let mut f = match f {
