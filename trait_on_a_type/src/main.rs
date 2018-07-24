@@ -32,6 +32,10 @@ impl Summary for Tweet {
     }
 }
 
+pub fn notify<T: Summary>(item: T){
+    println!("Breaking news! {}", item.summarize());
+}
+
 fn main() { 
 
     let tweet = Tweet {
