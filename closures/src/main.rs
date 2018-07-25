@@ -1,6 +1,7 @@
 #![allow(unused_variables)]
 use std::thread;
 use std::time::Duration;
+use std::collections::HashMap;
 
 struct Cacher<T>
     where T: Fn(u32) -> u32
@@ -29,6 +30,21 @@ impl<T> Cacher<T>
             },
         }
     }
+/*
+@TODO ADDING A HASMAP to handle multiple value input case
+    fn cacher_hashmap(&mut self, arg: u32) -> u32 {
+        let mut map = HashMap::new();
+        let key = String::from(arg)
+        match self.value {
+            Some(v) =>
+            None => {
+                let v = ()
+            }
+        }
+
+        map.insert(arg, self.value);
+    }
+*/
 }
 
 fn main() {
