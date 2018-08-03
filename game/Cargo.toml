@@ -5,3 +5,4 @@ authors = ["atedp <atedplummer@gmail.com>"]
 
 [dependencies]
 sdl2 = "0.31.0"
+gl = "0.10.0"
