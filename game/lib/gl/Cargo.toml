@@ -1,8 +1,7 @@
 [package]
-name = "game"
+name = "gl"
 version = "0.1.0"
 authors = ["atedp <atedplummer@gmail.com>"]
 
-[dependencies]
-sdl2 = "0.31.0"
-gl = { path = "lib/gl" }
+[build-dependencies]
+gl_generator = "0.9.0" 

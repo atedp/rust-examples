@@ -3,12 +3,13 @@ use std;
 use std::ffi::{CString, CStr};
 
 pub struct Program {
+    gl: gl::Gl,
     id: gl::types::GLuint,
 }
 
 impl Program {
-    pub fn from_shaders(shaders: &[Shader]) -> Result<Program, String> {
-        let program_id = unsafe { gl::CreateProgram() };
+    pub fn from_shaders(gl: gl::Gl, shaders: &[Shader]) -> Result<Program, String> {
+        let program_id = unsafe { gl.CreateProgram() };
 
         for shader in shaders {
             unsafe { gl::AttachShader(program_id, shader.id()); }
@@ -45,7 +46,7 @@ impl Program {
             unsafe { gl::DetachShader(program_id, shader.id()); }
         }
 
-        Ok(Program { id: program_id })
+        Ok(Program { gl, id: program_id })
     }
 
     pub fn id(&self) -> gl::types::GLuint {

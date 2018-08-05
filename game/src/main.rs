@@ -31,15 +31,15 @@ fn main() {
         }
 
     let vert_shader = render_gl::Shader::from_vert_source(
-        &CString::new(include_str!("triangle.vert")).unwrap()
+        gl.clone(), &CString::new(include_str!("triangle.vert")).unwrap()
     ).unwrap();
 
     let frag_shader = render_gl::Shader::from_frag_source(
-        &CString::new(include_str!("triangle.frag")).unwrap()
+        gl.clone, &CString::new(include_str!("triangle.frag")).unwrap()
     ).unwrap();
 
     let shader_program = render_gl::Program::from_shaders(
-        &[vert_shader, frag_shader]
+        gl.clone(), &[vert_shader, frag_shader]
     ).unwrap();
 
     shader_program.set_used();

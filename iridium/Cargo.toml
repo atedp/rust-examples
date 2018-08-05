@@ -1,8 +1,6 @@
 [package]
-name = "game"
+name = "iridium"
 version = "0.1.0"
 authors = ["atedp <atedplummer@gmail.com>"]
 
 [dependencies]
-sdl2 = "0.31.0"
-gl = { path = "lib/gl" }
