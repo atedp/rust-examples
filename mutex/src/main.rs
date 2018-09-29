@@ -1,12 +1,23 @@
 use std::sync::Mutex;
+use std::thread;
 
 fn main() {
-    let m = Mutex::new(5);
+    let counter = Mutex::new(0);
+    let mut handles = vec![];
 
-    {
-        let mut num = m.lock().unwrap();
-        *num = 6;
+    for _ in 0..10 {
+        let handle = thread::spawn(move || {
+            let mut num = counter.lock().unwrap();
+
+            *num += 1;
+        });
+        handles.push(handle);
     }
 
-    println!("m = {:?}", m);
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    println!("Result: {}", counter.lock().unwrap())
+
 }
