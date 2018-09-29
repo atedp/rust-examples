@@ -2,6 +2,7 @@
 pub enum Opcode {
     HLT,
     IGL,
+    LOAD,
 }
 
 #[derive(Debug, PartialEq)]

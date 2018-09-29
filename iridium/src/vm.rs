@@ -17,22 +17,33 @@ impl VM {
     }
 
     pub fn run(&mut self) {
-        loop {
-            if self.pc >= self.program.len() {
-                break;
-            }
-
-            match self.decode_opcode() {
-                Opcode::HLT => {
-                    println!("HLT encountered");
-                    return;
-                },
-                _ => {
-                    println!("Unrecognized opcode found! Terminating!");
-                    return;
-                }
-            }
+        let mut is_done = false;
+        while !is_done {
+            is_done = self.execute_instruction();
         }
+    }
+
+    pub fn run_once(&mut self) {
+        self.execute_instruction();
+    }
+
+    fn execute_instruction(&mut self) -> bool {
+        if self.pc >= self.program.len() {
+            return false;
+        }
+
+        match self.decode_opcode() {
+            Opcode::LOAD => {
+                let register = self.next_8_bits() as usize;
+                let number = self.next_16_bits() as u32;
+                self.registers[register] = number as i32;
+            },
+            Opcode::HLT => {
+                println!("HLT encountered");
+                false
+            },
+        }
+        true
     }
 
     fn decode_opcode(&mut self) -> Opcode {
